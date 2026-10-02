@@ -1,0 +1,6 @@
+#include "Base.xcconfig"
+APP_ENVIRONMENT = staging
+APP_DISPLAY_NAME = Champz Staging
+APP_BUNDLE_ID = com.app.footchampz.staging
+APP_ENTITLEMENTS = App/Resources/Champz-staging.entitlements
+API_BASE_URL = https:/$()/api-staging.champz.me

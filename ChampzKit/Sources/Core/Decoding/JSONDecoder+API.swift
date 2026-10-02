@@ -1,0 +1,44 @@
+import Foundation
+
+public extension JSONDecoder {
+    /// The one decoder for API responses: snake_case keys, ISO-8601 dates with or
+    /// without fractional seconds, and plain `yyyy-MM-dd` dates.
+    static func api() -> JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .custom { decoder in
+            let container = try decoder.singleValueContainer()
+            let text = try container.decode(String.self)
+            if let date = Date.parseAPI(text) {
+                return date
+            }
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "unrecognised date '\(text)'")
+        }
+        return decoder
+    }
+}
+
+public extension JSONEncoder {
+    static func api() -> JSONEncoder {
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        encoder.dateEncodingStrategy = .iso8601
+        return encoder
+    }
+}
+
+public extension Date {
+    /// Accepts "2026-10-02T18:30:00.123Z", "2026-10-02T18:30:00Z", "2026-10-02T18:30:00+03:00" and "2026-10-02".
+    static func parseAPI(_ text: String) -> Date? {
+        if let date = try? Date(text, strategy: .iso8601.year().month().day().time(includingFractionalSeconds: true)) {
+            return date
+        }
+        if let date = try? Date(text, strategy: .iso8601) {
+            return date
+        }
+        if let date = try? Date(text, strategy: .iso8601.year().month().day().dateSeparator(.dash)) {
+            return date
+        }
+        return nil
+    }
+}

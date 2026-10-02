@@ -1,0 +1,6 @@
+{
+  "channel": "sms",
+  "sent_to": "+974 •••• 1234",
+  "expires_in": 600,
+  "resend_after": 60
+}

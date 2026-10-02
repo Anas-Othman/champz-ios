@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+
+      - name: Install tools
+        run: brew bundle --no-upgrade
+
+      - name: Secrets stub
+        run: cp Config/Secrets.example.xcconfig Config/Secrets.xcconfig
+
+      - name: Lint
+        run: just lint
+
+      - name: Contract check
+        run: pip3 install --quiet pyyaml && just contract-check
+
+      - name: Generate project
+        run: just project
+
+      - name: Build and test
+        run: |
+          set -o pipefail
+          xcodebuild -project Champz.xcodeproj -scheme Staging \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -skipPackagePluginValidation test | xcbeautify

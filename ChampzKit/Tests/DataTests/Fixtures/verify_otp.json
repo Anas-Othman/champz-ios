@@ -1,0 +1,22 @@
+{
+  "access": "access.fixture",
+  "refresh": "refresh.fixture",
+  "user": {
+    "id": "42",
+    "user_type": "player",
+    "first_name": "Anas",
+    "last_name": "Ezzat",
+    "full_name": "Anas Ezzat",
+    "email": "anas@champz.me",
+    "country_code": "+974",
+    "phone": "55512345",
+    "role": "",
+    "permissions": [],
+    "sections": {},
+    "is_active": true,
+    "is_staff": false,
+    "is_superuser": false,
+    "wallet_balance": "0.00",
+    "created_at": "2026-10-02T10:00:00Z"
+  }
+}

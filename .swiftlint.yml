@@ -1,0 +1,60 @@
+# Architecture rules from the Engineering Guide (section 12) are enforced here as errors.
+included: [App, ChampzKit/Sources, ChampzKit/Tests]
+excluded: [.build, DerivedData, ChampzKit/Sources/Localization/L10n.swift]
+opt_in_rules:
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - empty_count
+  - closure_spacing
+  - unused_optional_binding
+disabled_rules:
+  - trailing_comma
+  - opening_brace
+  - todo
+identifier_name:
+  min_length: 2
+  excluded: [m, l, s, x, y, id, to, ok, at]
+line_length: { warning: 120, error: 160, ignores_comments: true }
+file_length: { warning: 300, error: 500 }
+function_body_length: { warning: 40, error: 80 }
+type_body_length: { warning: 250, error: 400 }
+force_unwrapping: error
+force_try: error
+force_cast: error
+custom_rules:
+  no_raw_colors:
+    name: "No raw colors outside DesignSystem/Colors"
+    regex: 'Color\((hex|red|\.sRGB|uiColor)|\bColor\.(red|blue|green|gray|black|white|orange|yellow|purple|pink|indigo)\b|UIColor\('
+    match_kinds: [identifier, keyword]
+    excluded: 'ChampzKit/Sources/DesignSystem/Colors/.*'
+    message: "Use Color.ds.<token>. Hex values live only in Palette.swift."
+    severity: error
+  no_string_literal_ui:
+    name: "No user-facing string literals"
+    regex: '\b(Text|Button|Label|TextField|SecureField|navigationTitle|alert|confirmationDialog)\(\s*"[^"]*[A-Za-z]{2,}[^"]*"'
+    excluded: '(ChampzKit/Sources/DesignSystem/Catalog/.*|.*Tests/.*|.*Preview.*)'
+    message: "Use L10n.<Section>.<key>. Every user-facing string lives in L10n.swift."
+    severity: error
+  no_raw_fonts:
+    name: "No raw fonts outside DesignSystem"
+    regex: '\.font\(\.system\(|Font\.custom\(|Font\.system\('
+    excluded: 'ChampzKit/Sources/DesignSystem/Typography/.*'
+    message: "Use AppFont.<style>."
+    severity: error
+  no_data_in_features:
+    name: "Only App may import Data"
+    regex: '^import Data$'
+    excluded: '(App/.*|ChampzKit/Sources/Data/.*|ChampzKit/Tests/DataTests/.*)'
+    message: "Features depend on Domain protocols; App wires the Data implementations."
+    severity: error
+  no_double_money:
+    name: "Money is Decimal, never Double"
+    regex: '\b(amount|price|balance|fee|total|commission)\w*\s*:\s*(Double|Float|CGFloat)\b'
+    message: "Use Money / Decimal for money."
+    severity: error
+  no_print:
+    name: "No print"
+    regex: '^\s*print\('
+    excluded: '.*Tests/.*'
+    message: "Use Logger."
+    severity: error

@@ -1,0 +1,9 @@
+{
+  "GET /api/v1/auth/me/": "76d92c8b0292fc6c",
+  "POST /api/v1/app/auth/resend-otp/": "b5f03750aa137a7d",
+  "POST /api/v1/app/auth/signin/": "1209836dade1d01f",
+  "POST /api/v1/app/auth/signup/": "33eb21f1bbabe06f",
+  "POST /api/v1/app/auth/verify-otp/": "4e8be936b0c864a4",
+  "POST /api/v1/auth/logout-all/": "ae8225552f6a5548",
+  "POST /api/v1/auth/token/refresh/": "559420a9d54d1a8e"
+}

@@ -1,0 +1,8 @@
+// Shared by every environment. Environment files #include this and override.
+// Secrets (Sentry DSN, etc.) come from Secrets.xcconfig, which is git-ignored;
+// copy Secrets.example.xcconfig to Secrets.xcconfig locally. CI writes it from secrets.
+#include? "Secrets.xcconfig"
+
+IPHONEOS_DEPLOYMENT_TARGET = 17.0
+SWIFT_VERSION = 6.0
+SENTRY_DSN = $(CHAMPZ_SENTRY_DSN)

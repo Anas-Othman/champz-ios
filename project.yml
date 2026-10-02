@@ -1,0 +1,124 @@
+# XcodeGen project definition. `just project` regenerates Champz.xcodeproj; the
+# .xcodeproj is git-ignored so there is nothing to merge by hand.
+name: Champz
+options:
+  bundleIdPrefix: com.app
+  deploymentTarget:
+    iOS: "17.0"
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: true
+  groupSortPosition: top
+
+configs:
+  Debug-Local: debug
+  Debug-Staging: debug
+  Release-Staging: release
+  Release-Production: release
+
+configFiles:
+  Debug-Local: Config/Local.xcconfig
+  Debug-Staging: Config/Staging.xcconfig
+  Release-Staging: Config/Staging.xcconfig
+  Release-Production: Config/Production.xcconfig
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    DEVELOPMENT_TEAM: S9CL8VLY4S
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    TARGETED_DEVICE_FAMILY: "1"
+    SUPPORTS_MACCATALYST: NO
+
+packages:
+  ChampzKit:
+    path: ChampzKit
+
+targets:
+  Champz:
+    type: application
+    platform: iOS
+    sources:
+      - path: App/Sources
+      - path: App/Resources
+    dependencies:
+      - package: ChampzKit
+        products: [Core, Domain, Data, DesignSystem, Localization, Navigation, Payments, AuthFeature]
+    settings:
+      base:
+        PRODUCT_NAME: Champz
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID)
+        MARKETING_VERSION: "2.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        CODE_SIGN_ENTITLEMENTS: $(APP_ENTITLEMENTS)
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_KEY_CFBundleDisplayName: $(APP_DISPLAY_NAME)
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        OTHER_SWIFT_FLAGS: "$(inherited) -warnings-as-errors"
+    info:
+      path: App/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: $(APP_DISPLAY_NAME)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        ITSAppUsesNonExemptEncryption: false
+        # Runtime configuration read by AppConfig — values come from the .xcconfig per environment.
+        ChampzEnvironment: $(APP_ENVIRONMENT)
+        ChampzAPIBaseURL: $(API_BASE_URL)
+        ChampzSentryDSN: $(SENTRY_DSN)
+        CFBundleURLTypes:
+          - CFBundleURLSchemes: [champz]
+            CFBundleURLName: $(APP_BUNDLE_ID)
+        # Usage strings copied from the Flutter app's Info.plist (parity).
+        NSCameraUsageDescription: Champz app needs access to your camera to allow you to take and upload photos for your profile and posts
+        NSPhotoLibraryUsageDescription: Champz app needs access to your photo library to allow you to select and upload photos for your profile and posts.
+        NSLocationWhenInUseUsageDescription: This app needs your location to provide relevant services based on your current position.
+        UIBackgroundModes: [remote-notification]
+    scheme:
+      configVariants: []
+  ChampzTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [App/Tests]
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: Champz
+
+schemes:
+  Local:
+    build:
+      targets: { Champz: all }
+    run: { config: Debug-Local }
+    test:
+      config: Debug-Local
+      targets:
+        - ChampzTests
+        - package: ChampzKit/CoreTests
+        - package: ChampzKit/DataTests
+        - package: ChampzKit/NavigationTests
+        - package: ChampzKit/AuthFeatureTests
+    archive: { config: Debug-Local }
+  Staging:
+    build:
+      targets: { Champz: all }
+    run: { config: Debug-Staging }
+    test:
+      config: Debug-Staging
+      targets:
+        - ChampzTests
+        - package: ChampzKit/CoreTests
+        - package: ChampzKit/DataTests
+        - package: ChampzKit/NavigationTests
+        - package: ChampzKit/AuthFeatureTests
+    archive: { config: Release-Staging }
+  Production:
+    build:
+      targets: { Champz: all }
+    run: { config: Release-Production }
+    archive: { config: Release-Production }

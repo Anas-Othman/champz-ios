@@ -1,0 +1,27 @@
+# Xcode
+*.xcodeproj
+*.xcworkspace
+!ChampzKit/Package.swift
+xcuserdata/
+DerivedData/
+.build/
+*.ipa
+*.dSYM.zip
+*.xcresult
+
+# Secrets — never committed
+Config/Secrets.xcconfig
+App/Resources/GoogleService-Info*.plist
+*.p12
+*.mobileprovision
+*.p8
+fastlane/report.xml
+fastlane/*.cer
+
+# Tooling
+.DS_Store
+.swiftpm/
+
+# IDEs
+.idea/
+.vscode/

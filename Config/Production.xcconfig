@@ -1,0 +1,7 @@
+#include "Base.xcconfig"
+APP_ENVIRONMENT = production
+APP_DISPLAY_NAME = Champz
+// Same bundle ID as the Flutter app: ships to existing users as an update.
+APP_BUNDLE_ID = com.app.footchampz
+APP_ENTITLEMENTS = App/Resources/Champz.entitlements
+API_BASE_URL = https:/$()/api-prod.champz.me
