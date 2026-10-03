@@ -1,8 +1,6 @@
-import Core
-import Domain
 import Foundation
 import Testing
-@testable import Data
+@testable import ChampzKit
 
 struct AuthRepositoryTests {
     private func fixture(_ name: String) throws -> Data {
@@ -33,10 +31,10 @@ struct AuthRepositoryTests {
     }
 
     @Test func challengeDecodesFromFixtureAndFromBareBody() throws {
-        let full = try JSONDecoder.api().decode(OtpChallengeDTO.self, from: fixture("otp_challenge")).toDomain()
+        let full = try JSONDecoder.api().decode(OtpChallenge.self, from: fixture("otp_challenge"))
         #expect(full == OtpChallenge(channel: .sms, sentTo: "+974 •••• 1234", expiresIn: 600, resendAfter: 60))
 
-        let bare = try JSONDecoder.api().decode(OtpChallengeDTO.self, from: Data("{}".utf8)).toDomain()
+        let bare = try JSONDecoder.api().decode(OtpChallenge.self, from: Data("{}".utf8))
         #expect(bare == OtpChallenge(channel: .unknown, sentTo: "", expiresIn: 0, resendAfter: 0))
     }
 

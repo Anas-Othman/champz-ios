@@ -44,7 +44,7 @@ targets:
       - path: App/Resources
     dependencies:
       - package: ChampzKit
-        products: [Core, Domain, Data, DesignSystem, Localization, Navigation, Payments, AuthFeature]
+        products: [ChampzKit]
     settings:
       base:
         PRODUCT_NAME: Champz
@@ -99,10 +99,7 @@ schemes:
       config: Debug-Local
       targets:
         - ChampzTests
-        - package: ChampzKit/CoreTests
-        - package: ChampzKit/DataTests
-        - package: ChampzKit/NavigationTests
-        - package: ChampzKit/AuthFeatureTests
+        - package: ChampzKit/ChampzKitTests
     archive: { config: Debug-Local }
   Staging:
     build:
@@ -112,10 +109,7 @@ schemes:
       config: Debug-Staging
       targets:
         - ChampzTests
-        - package: ChampzKit/CoreTests
-        - package: ChampzKit/DataTests
-        - package: ChampzKit/NavigationTests
-        - package: ChampzKit/AuthFeatureTests
+        - package: ChampzKit/ChampzKitTests
     archive: { config: Release-Staging }
   Production:
     build:

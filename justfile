@@ -35,14 +35,6 @@ fix:
     swiftformat .
     swiftlint lint --fix
 
-# Fail if any endpoint the app uses changed in contracts/openapi.yaml.
-contract-check:
-    python3 scripts/contract_check.py
-
-# Accept the current contract for the endpoints the app uses.
-contract-accept:
-    python3 scripts/contract_check.py --update
-
 # Regenerate L10n.swift + Localizable.xcstrings from the Flutter strings (one-off seed; edit the catalog afterwards).
 seed-strings:
     python3 scripts/seed_strings.py ../champz-mobile/lib/localization

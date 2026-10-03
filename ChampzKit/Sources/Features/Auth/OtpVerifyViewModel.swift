@@ -1,32 +1,28 @@
-import Core
-import DesignSystem
-import Domain
 import Foundation
-import Localization
 import Observation
 
 /// Screen logic for the code screen: a six-digit code, a server-driven resend timer,
 /// verify, resend. On success the app is told which flow finished.
 @MainActor
 @Observable
-public final class OtpVerifyViewModel {
-    public static let codeLength = 6
+final class OtpVerifyViewModel {
+    static let codeLength = 6
 
-    public let identifier: AuthIdentifier
-    public let mode: AuthMode
-    public private(set) var challenge: OtpChallenge
-    public var code = ""
-    public private(set) var isVerifying = false
-    public private(set) var isResending = false
+    let identifier: AuthIdentifier
+    let mode: AuthMode
+    private(set) var challenge: OtpChallenge
+    var code = ""
+    private(set) var isVerifying = false
+    private(set) var isResending = false
     /// Seconds until "Request a new code" becomes tappable. Starts at the server's `resend_after`.
-    public private(set) var resendSeconds = 0
+    private(set) var resendSeconds = 0
 
     private let auth: any AuthRepository
     private let toasts: ToastCenter
     private let onSignedIn: @MainActor (AuthSession, AuthMode) -> Void
     @ObservationIgnored private var countdown: Task<Void, Never>?
 
-    public init(
+    init(
         identifier: AuthIdentifier,
         challenge: OtpChallenge,
         mode: AuthMode,
@@ -43,20 +39,20 @@ public final class OtpVerifyViewModel {
         startCountdown(from: challenge.resendAfter)
     }
 
-    public var canResend: Bool {
+    var canResend: Bool {
         resendSeconds == 0 && !isResending && !isVerifying
     }
 
-    public var canVerify: Bool {
+    var canVerify: Bool {
         code.count == Self.codeLength && !isVerifying
     }
 
     /// "0:42" for the resend label.
-    public var resendCountdownLabel: String {
+    var resendCountdownLabel: String {
         String(format: "%d:%02d", resendSeconds / 60, resendSeconds % 60)
     }
 
-    public func verify() async {
+    func verify() async {
         guard code.count == Self.codeLength else {
             toasts.show(Toast(.error, L10n.Auth.pleaseEnterValidOtp))
             return
@@ -74,7 +70,7 @@ public final class OtpVerifyViewModel {
         }
     }
 
-    public func resend() async {
+    func resend() async {
         guard canResend else { return }
         isResending = true
         defer { isResending = false }
@@ -91,7 +87,7 @@ public final class OtpVerifyViewModel {
         }
     }
 
-    public func stopCountdown() {
+    func stopCountdown() {
         countdown?.cancel()
         countdown = nil
     }

@@ -16,7 +16,7 @@ public struct StrictDecimal: Decodable, Sendable, Equatable {
         if let text = try? container.decode(String.self) {
             guard let value = Decimal(
                 string: text.trimmingCharacters(in: .whitespaces),
-                locale: Locale(identifier: "en_US_POSIX")
+                locale: .posix
             ) else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
@@ -28,7 +28,7 @@ public struct StrictDecimal: Decodable, Sendable, Equatable {
         }
         if let number = try? container.decode(Double.self) {
             // Round-trip through the textual form so 24.99 does not become 24.98999...
-            guard let value = Decimal(string: String(number), locale: Locale(identifier: "en_US_POSIX")) else {
+            guard let value = Decimal(string: String(number), locale: .posix) else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
                     debugDescription: "\(number) is not a decimal amount"

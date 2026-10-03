@@ -1,9 +1,6 @@
-import Core
-import DesignSystem
-import Domain
 import Foundation
 import Testing
-@testable import AuthFeature
+@testable import ChampzKit
 
 @MainActor
 struct OtpVerifyViewModelTests {

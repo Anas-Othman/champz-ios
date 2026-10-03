@@ -1,9 +1,4 @@
-import AuthFeature
-import Core
-import Data
-import DesignSystem
-import Domain
-import Navigation
+import ChampzKit
 import SwiftUI
 
 /// The composition root: the only type that knows every module. Builds the live
@@ -14,7 +9,6 @@ final class AppContainer {
     let session: SessionStore
     let authState = AuthState()
     let router = AppRouter()
-    let events = AppEvents()
     let toasts = ToastCenter()
 
     /// Authenticated client used by every repository.
@@ -80,15 +74,12 @@ final class AppContainer {
         router.replayPendingDeepLink()
     }
 
-    /// What the auth feature needs. Sign-in lands in the tabs; sign-up goes to profile setup first.
-    func makeAuthFlow() -> AuthFlowDependencies {
-        AuthFlowDependencies(auth: auth, toasts: toasts) { [weak self] session, mode in
-            guard let self else { return }
-            let via = String(describing: mode)
-            Log.auth.info("Signed in as \(session.user.id, privacy: .public) via \(via, privacy: .public)")
-            authState.transition(to: mode == .signUp ? .needsProfile : .signedIn)
-            router.replayPendingDeepLink()
-        }
+    /// Sign-in lands in the tabs; sign-up goes to profile setup first.
+    func signedIn(_ session: AuthSession, via mode: AuthMode) {
+        let via = String(describing: mode)
+        Log.auth.info("Signed in as \(session.user.id, privacy: .public) via \(via, privacy: .public)")
+        authState.transition(to: mode == .signUp ? .needsProfile : .signedIn)
+        router.replayPendingDeepLink()
     }
 
     func signOut() async {

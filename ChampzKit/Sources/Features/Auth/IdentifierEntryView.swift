@@ -1,5 +1,3 @@
-import DesignSystem
-import Localization
 import SwiftUI
 
 /// "Let's get started now!" — phone/email tabs, one field, Continue, terms.

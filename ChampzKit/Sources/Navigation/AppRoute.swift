@@ -1,4 +1,3 @@
-import Domain
 import Foundation
 
 /// Every pushable destination in the app. IDs only, never models or views: the App

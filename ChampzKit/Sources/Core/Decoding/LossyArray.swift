@@ -66,6 +66,7 @@ public struct LossyArray<Element: Decodable>: Decodable {
 
 extension LossyArray: Sendable where Element: Sendable {}
 extension LossyArray: Equatable where Element: Equatable {}
+extension LossyArray: Hashable where Element: Hashable {}
 
 public extension KeyedDecodingContainer {
     func decode<E>(_ type: LossyArray<E>.Type, forKey key: Key) throws -> LossyArray<E> {

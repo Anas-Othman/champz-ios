@@ -1,5 +1,3 @@
-import DesignSystem
-import Localization
 import SwiftUI
 
 /// The start page: headline, Create Account, Login. No logic, so no view model.

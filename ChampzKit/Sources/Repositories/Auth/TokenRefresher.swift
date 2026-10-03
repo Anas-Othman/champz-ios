@@ -1,10 +1,9 @@
-import Core
 import Foundation
 
-/// `SessionStore`'s refresher. Uses its own `HTTPClient` without the auth interceptor
+/// `SessionStore`'s refresher. Uses an `HTTPClient` without the auth interceptor
 /// so a refresh can never trigger another refresh.
 public struct LiveTokenRefresher: TokenRefreshing {
-    private let http: any HTTPClientProtocol
+    let http: any HTTPClientProtocol
 
     public init(http: any HTTPClientProtocol) {
         self.http = http

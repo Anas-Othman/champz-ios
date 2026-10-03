@@ -1,6 +1,6 @@
 import Foundation
 import Testing
-@testable import Core
+@testable import ChampzKit
 
 private enum Status: String, UnknownCaseRepresentable, Equatable {
     case open, closed, unknown

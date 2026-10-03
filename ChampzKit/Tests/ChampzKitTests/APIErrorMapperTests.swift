@@ -1,6 +1,6 @@
 import Foundation
 import Testing
-@testable import Core
+@testable import ChampzKit
 
 struct APIErrorMapperTests {
     private func body(_ json: String) -> Data {

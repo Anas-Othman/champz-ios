@@ -1,6 +1,3 @@
-import DesignSystem
-import Domain
-import Localization
 import SwiftUI
 
 /// The code screen: "Check your sms! We've sent…", six boxes, resend timer, Verify, terms.

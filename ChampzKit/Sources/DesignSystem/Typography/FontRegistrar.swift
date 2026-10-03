@@ -1,4 +1,3 @@
-import Core
 import CoreText
 import Foundation
 import UIKit

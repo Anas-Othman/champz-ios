@@ -41,11 +41,11 @@ custom_rules:
     excluded: 'ChampzKit/Sources/DesignSystem/Typography/.*'
     message: "Use AppFont.<style>."
     severity: error
-  no_data_in_features:
-    name: "Only App may import Data"
-    regex: '^import Data$'
-    excluded: '(App/.*|ChampzKit/Sources/Data/.*|ChampzKit/Tests/DataTests/.*)'
-    message: "Features depend on Domain protocols; App wires the Data implementations."
+  no_live_repositories_in_features:
+    name: "Features use repository protocols, not Live types"
+    regex: '\bLive\w+Repository\b'
+    included: 'ChampzKit/Sources/Features/.*'
+    message: "Depend on the protocol; App wires the Live implementation."
     severity: error
   no_double_money:
     name: "Money is Decimal, never Double"

@@ -1,5 +1,4 @@
-import Core
-import DesignSystem
+import ChampzKit
 import SwiftUI
 
 @main

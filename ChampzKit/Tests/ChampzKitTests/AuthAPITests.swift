@@ -1,7 +1,6 @@
-import Core
 import Foundation
 import Testing
-@testable import Data
+@testable import ChampzKit
 
 /// A stub `HTTPClient`: answers each endpoint with canned JSON, no network.
 actor StubHTTPClient: HTTPClientProtocol {
@@ -45,7 +44,7 @@ struct AuthAPITests {
             withExtension: "json",
             subdirectory: "Fixtures"
         ))
-        let pair = try JSONDecoder.api().decode(TokenPairDTO.self, from: Data(contentsOf: url))
+        let pair = try JSONDecoder.api().decode(TokenPair.self, from: Data(contentsOf: url))
         #expect(pair.access.hasPrefix("eyJ"))
         #expect(!pair.refresh.isEmpty)
     }

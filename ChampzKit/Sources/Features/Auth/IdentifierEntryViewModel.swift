@@ -1,33 +1,29 @@
-import Core
-import DesignSystem
-import Domain
 import Foundation
-import Localization
 import Observation
 
 /// Screen logic for "Let's get started now!": pick phone or email, validate, request a code.
 /// Pure logic: no SwiftUI import, fully testable with a fake `AuthRepository`.
 @MainActor
 @Observable
-public final class IdentifierEntryViewModel {
-    public enum Method: Hashable, CaseIterable {
+final class IdentifierEntryViewModel {
+    enum Method: Hashable, CaseIterable {
         case phone, email
     }
 
-    public let mode: AuthMode
-    public var method: Method = .phone
-    public var country = CountryDialCodes.qatar
-    public var phoneNumber = ""
-    public var email = ""
-    public private(set) var isSubmitting = false
+    let mode: AuthMode
+    var method: Method = .phone
+    var country = CountryDialCodes.qatar
+    var phoneNumber = ""
+    var email = ""
+    private(set) var isSubmitting = false
     /// Inline validation message, cleared as the player types.
-    public private(set) var fieldError: String?
+    private(set) var fieldError: String?
 
     private let auth: any AuthRepository
     private let toasts: ToastCenter
     private let onChallenge: @MainActor (AuthIdentifier, OtpChallenge) -> Void
 
-    public init(
+    init(
         mode: AuthMode,
         auth: any AuthRepository,
         toasts: ToastCenter,
@@ -40,7 +36,7 @@ public final class IdentifierEntryViewModel {
     }
 
     /// The identifier the current input describes, or nil with `fieldError` set.
-    public var identifier: AuthIdentifier? {
+    var identifier: AuthIdentifier? {
         switch method {
         case .phone:
             let digits = phoneNumber.filter(\.isNumber)
@@ -51,11 +47,11 @@ public final class IdentifierEntryViewModel {
         }
     }
 
-    public func inputChanged() {
+    func inputChanged() {
         fieldError = nil
     }
 
-    public func submit() async {
+    func submit() async {
         guard !isSubmitting else { return }
         guard let identifier else {
             fieldError = String(localized: method == .phone ? L10n.SignUp.pleaseEnterValidNumber : L10n.Auth

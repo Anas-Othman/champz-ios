@@ -1,8 +1,4 @@
-import AuthFeature
-import Core
-import DesignSystem
-import Localization
-import Navigation
+import ChampzKit
 import SwiftUI
 
 /// Switches the whole UI on the auth phase.
@@ -17,7 +13,7 @@ struct RootView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.ds.background)
             case .signedOut:
-                AuthFlowView(dependencies: container.makeAuthFlow())
+                AuthFlowView(auth: container.auth, toasts: container.toasts, onSignedIn: container.signedIn)
             case .needsProfile:
                 ProfileSetupPlaceholderView(container: container)
             case .signedIn:

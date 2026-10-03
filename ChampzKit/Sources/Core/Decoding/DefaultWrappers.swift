@@ -127,6 +127,11 @@ extension DefaultZero: Equatable where Value: Equatable {}
 extension DefaultFalse: Equatable {}
 extension DefaultUnknown: Equatable where Value: Equatable {}
 
+extension DefaultEmpty: Hashable where Value: Hashable {}
+extension DefaultZero: Hashable where Value: Hashable {}
+extension DefaultFalse: Hashable {}
+extension DefaultUnknown: Hashable where Value: Hashable {}
+
 /// A missing key never reaches the wrapper's `init(from:)`; these overloads supply the default.
 public extension KeyedDecodingContainer {
     func decode<V>(_ type: DefaultEmpty<V>.Type, forKey key: Key) throws -> DefaultEmpty<V> {

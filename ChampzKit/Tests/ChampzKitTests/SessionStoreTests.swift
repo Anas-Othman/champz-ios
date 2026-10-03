@@ -1,6 +1,6 @@
 import Foundation
 import Testing
-@testable import Core
+@testable import ChampzKit
 
 /// Counts refresh calls and answers after a short delay so concurrent callers overlap.
 private actor CountingRefresher: TokenRefreshing {

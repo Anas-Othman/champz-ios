@@ -1,6 +1,4 @@
-import Core
 import Foundation
-import Localization
 
 /// How each `AppError` reads on screen. Core defines the cases; the words live here so
 /// Core has no dependency on Localization.

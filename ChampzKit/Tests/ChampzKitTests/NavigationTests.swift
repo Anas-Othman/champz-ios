@@ -1,7 +1,6 @@
-import Domain
 import Foundation
 import Testing
-@testable import Navigation
+@testable import ChampzKit
 
 @MainActor
 struct AppRouterTests {

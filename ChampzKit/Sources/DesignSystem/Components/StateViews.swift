@@ -1,5 +1,3 @@
-import Core
-import Localization
 import SwiftUI
 
 /// Renders a `Loadable<T>` the same way everywhere: skeleton while loading, content

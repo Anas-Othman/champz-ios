@@ -1,6 +1,5 @@
-import Core
-import Domain
 import Foundation
+@testable import ChampzKit
 
 /// Scripted `AuthRepository` for view-model tests. Records calls, returns what it is told.
 actor FakeAuthRepository: AuthRepository {

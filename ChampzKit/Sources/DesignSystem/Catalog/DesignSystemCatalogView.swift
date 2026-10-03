@@ -1,5 +1,3 @@
-import Core
-import Localization
 import SwiftUI
 
 /// Debug-only gallery of every token and component, so the look is reviewed in one place.

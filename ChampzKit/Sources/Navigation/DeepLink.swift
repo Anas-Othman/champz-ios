@@ -1,4 +1,3 @@
-import Domain
 import Foundation
 
 /// A parsed universal link, custom-scheme URL or push payload.

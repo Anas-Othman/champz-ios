@@ -42,3 +42,8 @@ public extension Date {
         return nil
     }
 }
+
+public extension Locale {
+    /// For parsing numbers the server writes with a dot decimal separator, whatever the user's locale.
+    static let posix = Locale(identifier: "en_US_POSIX")
+}
