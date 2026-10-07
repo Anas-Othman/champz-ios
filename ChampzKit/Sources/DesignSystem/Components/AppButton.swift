@@ -7,6 +7,8 @@ public struct AppButton: View {
         case primary
         case secondary
         case destructive
+        /// White with a red label and hairline border (Leave match).
+        case destructiveOutline
         case text
     }
 
@@ -56,6 +58,7 @@ public struct AppButton: View {
         switch style {
         case .primary, .destructive: .ds.onBrand
         case .secondary, .text: .ds.brandPrimary
+        case .destructiveOutline: .ds.destructiveText
         }
     }
 }
@@ -73,9 +76,12 @@ struct AppButtonStyle: ButtonStyle {
             .padding(.horizontal, style == .text ? Spacing.s : Spacing.l)
             .background(background, in: RoundedRectangle(cornerRadius: Radius.m, style: .continuous))
             .overlay {
-                if style == .secondary {
+                if style == .secondary || style == .destructiveOutline {
                     RoundedRectangle(cornerRadius: Radius.m, style: .continuous)
-                        .strokeBorder(Color.ds.brandPrimary, lineWidth: 1)
+                        .strokeBorder(
+                            style == .secondary ? Color.ds.brandPrimary : Color.ds.hairline,
+                            lineWidth: style == .secondary ? 1 : 1.5
+                        )
                 }
             }
             .opacity(isEnabled ? 1 : 0.5)
@@ -87,6 +93,7 @@ struct AppButtonStyle: ButtonStyle {
         switch style {
         case .primary, .destructive: .ds.onBrand
         case .secondary, .text: .ds.brandPrimary
+        case .destructiveOutline: .ds.destructiveText
         }
     }
 
@@ -94,7 +101,7 @@ struct AppButtonStyle: ButtonStyle {
         switch style {
         case .primary: .ds.brandPrimary
         case .destructive: .ds.statusError
-        case .secondary: .ds.surface
+        case .secondary, .destructiveOutline: .ds.surface
         case .text: .clear
         }
     }

@@ -53,9 +53,11 @@ public enum CountryDialCodes {
 }
 
 /// Compact "🇶🇦 +974" button that opens a searchable country list.
+/// `.disabled(true)` locks it: no chevron, no list (a phone that is already set).
 public struct CountryDialCodePicker: View {
     @Binding private var selection: CountryDialCode
     @State private var isPresented = false
+    @Environment(\.isEnabled) private var isEnabled
 
     public init(selection: Binding<CountryDialCode>) {
         _selection = selection
@@ -70,9 +72,11 @@ public struct CountryDialCodePicker: View {
                 Text(verbatim: selection.dial)
                     .font(AppFont.bodyLarge)
                     .foregroundStyle(.ds.textPrimary)
-                Image(.chevronDown)
-                    .font(.caption)
-                    .foregroundStyle(.ds.textTertiary)
+                if isEnabled {
+                    Image(.chevronDown)
+                        .font(.caption)
+                        .foregroundStyle(.ds.textTertiary)
+                }
             }
         }
         .accessibilityLabel(Text(verbatim: "\(selection.name) \(selection.dial)"))

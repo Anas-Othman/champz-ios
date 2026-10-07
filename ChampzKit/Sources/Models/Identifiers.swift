@@ -55,6 +55,9 @@ public enum PaymentTag {}
 public enum PaymentSessionTag {}
 public enum JoinRequestTag {}
 public enum NotificationTag {}
+public enum PositionTag {}
+public enum CountryTag {}
+public enum CityTag {}
 
 public typealias MatchID = Identifier<MatchTag>
 public typealias VenueID = Identifier<VenueTag>
@@ -67,3 +70,6 @@ public typealias PaymentID = Identifier<PaymentTag>
 public typealias PaymentSessionID = Identifier<PaymentSessionTag>
 public typealias JoinRequestID = Identifier<JoinRequestTag>
 public typealias NotificationID = Identifier<NotificationTag>
+public typealias PositionID = Identifier<PositionTag>
+public typealias CountryID = Identifier<CountryTag>
+public typealias CityID = Identifier<CityTag>

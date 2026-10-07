@@ -34,6 +34,10 @@ settings:
 packages:
   ChampzKit:
     path: ChampzKit
+  # Cloud Firestore for match chat (and later FCM). App target only, so ChampzKit builds without it.
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk
+    from: 12.19.0
 
 targets:
   Champz:
@@ -45,6 +49,8 @@ targets:
     dependencies:
       - package: ChampzKit
         products: [ChampzKit]
+      - package: Firebase
+        products: [FirebaseCore, FirebaseFirestore, FirebaseMessaging]
     settings:
       base:
         PRODUCT_NAME: Champz
@@ -70,6 +76,7 @@ targets:
         ChampzEnvironment: $(APP_ENVIRONMENT)
         ChampzAPIBaseURL: $(API_BASE_URL)
         ChampzSentryDSN: $(SENTRY_DSN)
+        ChampzWebURL: $(WEB_URL)
         CFBundleURLTypes:
           - CFBundleURLSchemes: [champz]
             CFBundleURLName: $(APP_BUNDLE_ID)
@@ -78,6 +85,8 @@ targets:
         NSPhotoLibraryUsageDescription: Champz app needs access to your photo library to allow you to select and upload photos for your profile and posts.
         NSLocationWhenInUseUsageDescription: This app needs your location to provide relevant services based on your current position.
         UIBackgroundModes: [remote-notification]
+        # We hand Firebase the APNs token ourselves (AppDelegate), so no method swizzling.
+        FirebaseAppDelegateProxyEnabled: false
     scheme:
       configVariants: []
   ChampzTests:

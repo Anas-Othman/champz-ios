@@ -9,6 +9,8 @@ public enum AppFont {
         static let display = "ClashDisplay"
         /// The variable Satoshi file; weights come from the file's named instances.
         static let body = "SatoshiVariable-Bold"
+        /// Graphik Arabic — Flutter's `AppConstant.graphicArabic`, used for detail labels and body text.
+        static let graphik = "GraphikArabic"
     }
 
     /// 36pt display, bold.
@@ -17,6 +19,8 @@ public enum AppFont {
     public static let title1 = custom(Family.display, weight: .semibold, size: 28, relativeTo: .title)
     /// 20pt.
     public static let title2 = custom(Family.display, weight: .semibold, size: 20, relativeTo: .title2)
+    /// 20pt bold Clash — section titles on Home ("Upcoming Matches", "Book a Court"…).
+    public static let sectionHeader = custom(Family.display, weight: .bold, size: 20, relativeTo: .title3)
     /// 18pt — the Flutter app's section-heading size.
     public static let headline = custom(Family.display, weight: .medium, size: 18, relativeTo: .headline)
     /// 16pt.
@@ -29,6 +33,20 @@ public enum AppFont {
     public static let caption = custom(Family.body, weight: .regular, size: 13, relativeTo: .footnote)
     /// 12pt.
     public static let captionSmall = custom(Family.body, weight: .regular, size: 12, relativeTo: .caption)
+    /// 24pt bold Clash — titles on detail screens.
+    public static let screenTitle = custom(Family.display, weight: .bold, size: 24, relativeTo: .title)
+    /// 18pt medium Graphik — date/venue lines under a title.
+    public static let detailLine = custom(Family.graphik, weight: .medium, size: 18, relativeTo: .headline)
+    /// 18pt bold Graphik — section headings (Description, Location…).
+    public static let sectionTitle = custom(Family.graphik, weight: .bold, size: 18, relativeTo: .headline)
+    /// 16pt medium Graphik — labels in info cards.
+    public static let infoLabel = custom(Family.graphik, weight: .medium, size: 16, relativeTo: .body)
+    /// 16pt bold Clash — values in info cards and names.
+    public static let infoValue = custom(Family.display, weight: .bold, size: 16, relativeTo: .body)
+    /// 14pt medium Graphik — body copy on detail screens.
+    public static let detailBody = custom(Family.graphik, weight: .medium, size: 14, relativeTo: .callout)
+    /// 18pt bold Graphik — large action buttons and counters.
+    public static let buttonLarge = custom(Family.graphik, weight: .bold, size: 18, relativeTo: .headline)
     /// Large state icons (empty/error screens).
     public static let stateIcon = Font.system(size: 40)
     /// Buttons: 16pt medium.
@@ -48,6 +66,13 @@ public enum AppFont {
     }
 
     private static func postScriptName(family: String, weight: Font.Weight) -> String {
+        if family == Family.graphik {
+            switch weight {
+            case .bold, .heavy, .black, .semibold: return "GraphikArabic-Bold"
+            case .medium: return "GraphikArabic-Medium"
+            default: return "GraphikArabic-Regular"
+            }
+        }
         guard family == Family.display else { return family }
         switch weight {
         case .bold, .heavy, .black: return "ClashDisplay-Bold"

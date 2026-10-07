@@ -11,9 +11,21 @@ public struct ColorTokens: Sendable {
     public let brandNavy = Palette.indigo900
     public let brandAccentSoft = Palette.purple100
     public let onBrand = Palette.white
+    /// Apple Pay buttons must be black with white text (Apple's guidelines).
+    public let applePayBackground = Palette.black
+    public let onApplePay = Palette.white
+    /// Pink used for counters, icons and the chat button in match screens.
+    public let accent = Palette.pink500
+    /// Darker pink for tiles on an accent card (goals breakdown).
+    public let accentDeep = Palette.pink700
+    public let accentSoft = Palette.purple400
+    public let brandDeep = Palette.purple800
+    public let brandSoft = Palette.purple300
 
-    // Text
+    /// Text
     public let textPrimary = Palette.black
+    /// Dark grey for names and labels (Flutter black350).
+    public let textStrong = Palette.gray900
     public let textSecondary = Palette.gray700
     public let textTertiary = Palette.gray500
     public let textDisabled = Palette.gray300
@@ -31,6 +43,10 @@ public struct ColorTokens: Sendable {
     public let border = Palette.gray150
     public let borderStrong = Palette.gray250
     public let separator = Palette.gray100
+    public let hairline = Palette.hairline
+    public let shadow = Palette.shadow
+    /// Red label on outlined destructive buttons (Leave match).
+    public let destructiveText = Palette.red400
 
     // Status
     public let statusSuccess = Palette.green500

@@ -8,6 +8,8 @@ struct AppConfig: Sendable {
 
     let environment: Environment
     let apiBaseURL: URL
+    /// Public site, used for share links (`?games_id=`).
+    let webURL: URL
     let sentryDSN: String?
     let appVersion: String
     let buildNumber: String
@@ -18,7 +20,8 @@ struct AppConfig: Sendable {
             let environmentRaw = info["ChampzEnvironment"] as? String,
             let environment = Environment(rawValue: environmentRaw),
             let baseURLString = info["ChampzAPIBaseURL"] as? String,
-            let apiBaseURL = URL(string: baseURLString)
+            let apiBaseURL = URL(string: baseURLString),
+            let webURL = URL(string: (info["ChampzWebURL"] as? String) ?? "https://champz.me")
         else {
             // A build without its xcconfig is a build error, not a runtime condition.
             fatalError("Info.plist is missing ChampzEnvironment / ChampzAPIBaseURL — check Config/*.xcconfig")
@@ -27,6 +30,7 @@ struct AppConfig: Sendable {
         return AppConfig(
             environment: environment,
             apiBaseURL: apiBaseURL,
+            webURL: webURL,
             sentryDSN: dsn,
             appVersion: info["CFBundleShortVersionString"] as? String ?? "0",
             buildNumber: info["CFBundleVersion"] as? String ?? "0"
@@ -36,6 +40,7 @@ struct AppConfig: Sendable {
     static let preview = AppConfig(
         environment: .local,
         apiBaseURL: URL(string: "https://api-staging.champz.me")!,
+        webURL: URL(string: "https://staging.champz.me")!,
         sentryDSN: nil,
         appVersion: "2.0.0",
         buildNumber: "1"

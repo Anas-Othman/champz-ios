@@ -20,6 +20,7 @@ public extension AppError {
         case .timeout: L10n.Errors.timeoutMessage
         case .unauthorized: L10n.Errors.unauthorizedMessage
         case .notFound: L10n.Errors.notFoundMessage
+        case .payment(.insufficientFunds): L10n.Join.insufficientFunds
         case let .server(message?, _):
             // The API's `details` is already a sentence written for the player.
             LocalizedStringResource(stringLiteral: message)

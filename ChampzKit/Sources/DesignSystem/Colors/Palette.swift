@@ -10,6 +10,11 @@ enum Palette {
     static let purple500 = Color(hex: 0x9046EA) // newPurple
     static let purple100 = Color(hex: 0xEADDFB) // purple50 / lightpink
     static let purple200 = Color(hex: 0xCCAAF5) // newPurple200
+    static let purple300 = Color(hex: 0xC89AFF) // lightPurple2
+    static let purple400 = Color(hex: 0xAB67FF) // pink1
+    static let purple800 = Color(hex: 0x4D2183) // darkPurple
+    static let pink500 = Color(hex: 0xC03DE0) // newpink / pink
+    static let pink700 = Color(hex: 0x9224AC) // newpink1
 
     // Neutrals
     static let black = Color(hex: 0x000000) // black900
@@ -34,6 +39,9 @@ enum Palette {
     static let green600 = Color(hex: 0x43A047) // green600
     static let red500 = Color(hex: 0xEE5356) // redAlert
     static let red600 = Color(hex: 0xCA3A3A) // red
+    static let red400 = Color(hex: 0xFF383C) // leave-match text
+    static let hairline = Color(hex: 0x323232, opacity: 0.08) // outline buttons
+    static let shadow = Color(hex: 0x000000, opacity: 0.06) // card shadow
     static let amber500 = Color(hex: 0xF59E0B) // yellow
     static let orange500 = Color(hex: 0xFAB600) // orange
     static let blue500 = Color(hex: 0x222FBD) // blue

@@ -23,8 +23,10 @@ public enum APIErrorMapper {
             if let code = payload.code, let payment = paymentFailure(for: code) {
                 return .payment(payment)
             }
-            // Validation errors carry per-field messages; everything else is a plain server message.
-            if payload.code == APIErrorCode.validation || payload.code == nil, !payload.fieldErrors.isEmpty {
+            // Validation errors, and conflicts that name a field ("that phone is taken"), carry
+            // per-field messages so forms can show them under the box; everything else is a plain message.
+            let fieldCodes: [String?] = [APIErrorCode.validation, APIErrorCode.conflict, nil]
+            if fieldCodes.contains(payload.code), !payload.fieldErrors.isEmpty {
                 return .validation(payload.fieldErrors)
             }
             return .server(message: payload.userMessage, code: payload.code)
@@ -50,7 +52,7 @@ public enum APIErrorMapper {
     /// Payment codes the checkout endpoints return (PAYMENT_SCENARIOS_MATRIX.md).
     private static func paymentFailure(for code: String) -> PaymentFailure? {
         switch code.uppercased() {
-        case "INSUFFICIENT_FUNDS": .insufficientFunds
+        case "INSUFFICIENT_FUNDS", APIErrorCode.insufficientFunds: .insufficientFunds
         case "PAYMENT_DECLINED", "CARD_DECLINED": .declined
         case "SESSION_EXPIRED", "PAYMENT_SESSION_EXPIRED": .sessionExpired
         default: nil

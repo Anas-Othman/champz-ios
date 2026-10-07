@@ -15,6 +15,12 @@ public struct Toast: Identifiable, Equatable, Sendable {
         self.message = message
     }
 
+    /// For already-formatted text (e.g. `L10n.Matches.refundedToWallet(amount)`).
+    public init(_ kind: Kind, text: String) {
+        self.kind = kind
+        message = LocalizedStringResource(stringLiteral: text)
+    }
+
     public static func == (lhs: Toast, rhs: Toast) -> Bool {
         lhs.id == rhs.id
     }

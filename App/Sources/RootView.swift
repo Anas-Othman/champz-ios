@@ -82,9 +82,14 @@ struct MainTabView: View {
     @ViewBuilder
     private func tabRoot(_ tab: AppTab) -> some View {
         switch tab {
-        case .home: PlaceholderScreen(title: L10n.Tabs.home, icon: .home)
-        case .transferMarket: PlaceholderScreen(title: L10n.Tabs.transferMarket, icon: .transferMarket)
-        case .myStats: PlaceholderScreen(title: L10n.Tabs.myStats, icon: .stats)
+        case .home: HomeView(viewModel: HomeViewModel(
+                matches: container.matches,
+                courts: container.courts,
+                router: container.router,
+                toasts: container.toasts
+            ))
+        case .transferMarket: TransferMarketView(viewModel: container.makeTransferMarket())
+        case .myStats: MyStatsView(viewModel: container.makeMyStats())
         }
     }
 }

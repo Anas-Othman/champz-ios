@@ -9,6 +9,8 @@ public enum DeepLink: Hashable, Sendable {
     case team(TeamID)
     case wallet
     case notifications
+    /// A tapped push notification: open what it is about.
+    case push(AppRoute)
     /// `champz://payment/callback?status=paid|failed` — SkipCash's return after hosted checkout.
     case paymentCallback(PaymentCallbackStatus)
 }

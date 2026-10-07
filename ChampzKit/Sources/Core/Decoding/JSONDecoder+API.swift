@@ -29,7 +29,17 @@ public extension JSONEncoder {
 
 public extension Date {
     /// Accepts "2026-10-02T18:30:00.123Z", "2026-10-02T18:30:00Z", "2026-10-02T18:30:00+03:00" and "2026-10-02".
-    static func parseAPI(_ text: String) -> Date? {
+    static func parseAPI(_ text: String, assumeLocal: Bool = false) -> Date? {
+        // Venue wall-clock times arrive without a zone ("2026-10-10T20:00:00"); read them in the device zone.
+        if assumeLocal, !text.hasSuffix("Z"), !text.contains("+") {
+            if let date = try? Date(
+                text,
+                strategy: Date.ISO8601FormatStyle(timeZone: .current).year().month().day()
+                    .time(includingFractionalSeconds: false)
+            ) {
+                return date
+            }
+        }
         if let date = try? Date(text, strategy: .iso8601.year().month().day().time(includingFractionalSeconds: true)) {
             return date
         }

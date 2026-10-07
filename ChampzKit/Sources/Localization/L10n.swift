@@ -267,7 +267,7 @@ public enum L10n {
         public static let freeAgentDescription = LocalizedStringResource("free_agent_description", defaultValue: "You may receive a team invite from a captain — otherwise, the organizer will assign you to a team.", bundle: bundle)
         public static let notEligibleToJoin = LocalizedStringResource("not_eligible_to_join", defaultValue: "You’re not eligible to join this tournament.", bundle: bundle)
         public static let maxAgeMessage = LocalizedStringResource("max_age_message", defaultValue: "Players above this age can not register.", bundle: bundle)
-        public static let confirmRegistration = LocalizedStringResource("confirm_registration", defaultValue: "Confirm  Registration", bundle: bundle)
+        public static let confirmRegistration = LocalizedStringResource("confirm_registration", defaultValue: "Confirm Registration", bundle: bundle)
         public static let bookingDetails = LocalizedStringResource("booking_details", defaultValue: "Booking Details", bundle: bundle)
         public static let orderSummery = LocalizedStringResource("order_summery", defaultValue: "Order Summery", bundle: bundle)
         public static let payWithCash = LocalizedStringResource("pay_with_cash", defaultValue: "Pay With Cash", bundle: bundle)
@@ -411,7 +411,7 @@ public enum L10n {
         public static let payViaCreditDebitCard = LocalizedStringResource("pay_via_credit_debit_card", defaultValue: "Pay With Card", bundle: bundle)
         public static let backToHome = LocalizedStringResource("back_to_home", defaultValue: "Back To Home", bundle: bundle)
         public static let topUpSuccess = LocalizedStringResource("top_up_success", defaultValue: "Top up success", bundle: bundle)
-        public static let belowIsYourTopUpSummary = LocalizedStringResource("below_is_your_top_up_summary", defaultValue: "Below is your top up summery", bundle: bundle)
+        public static let belowIsYourTopUpSummary = LocalizedStringResource("below_is_your_top_up_summary", defaultValue: "Below is your top up summary", bundle: bundle)
         public static let amount = LocalizedStringResource("amount", defaultValue: "Amount", bundle: bundle)
         public static let card = LocalizedStringResource("card", defaultValue: "Card", bundle: bundle)
         public static let transactionId = LocalizedStringResource("transaction_id", defaultValue: "Transaction ID", bundle: bundle)
@@ -425,7 +425,7 @@ public enum L10n {
         public static let topUp = LocalizedStringResource("top_up", defaultValue: "Top up", bundle: bundle)
         public static let transfer = LocalizedStringResource("transfer", defaultValue: "Transfer", bundle: bundle)
         public static let transactions = LocalizedStringResource("transactions", defaultValue: "Transactions", bundle: bundle)
-        public static let noPaymentHistoryFound = LocalizedStringResource("no_payment_history_found", defaultValue: "No payment History found", bundle: bundle)
+        public static let noPaymentHistoryFound = LocalizedStringResource("no_payment_history_found", defaultValue: "No payment history found", bundle: bundle)
         public static let confirmTransaction = LocalizedStringResource("confirm_transaction", defaultValue: "Confirm Transaction", bundle: bundle)
         public static let topUpAmount = LocalizedStringResource("top_up_amount", defaultValue: "Top up Amount", bundle: bundle)
         public static let accountBalance = LocalizedStringResource("account_balance", defaultValue: "Account Balance", bundle: bundle)
@@ -453,6 +453,18 @@ public enum L10n {
         public static let notifications = LocalizedStringResource("notifications", defaultValue: "Notifications", bundle: bundle)
         public static let markAllAsRead = LocalizedStringResource("mark_all_as_read", defaultValue: "Mark all as read", bundle: bundle)
         public static let all = LocalizedStringResource("all", defaultValue: "All", bundle: bundle)
+        public static let noNotifications = LocalizedStringResource("notifications.empty", defaultValue: "No notifications yet", bundle: bundle)
+        public static let accept = LocalizedStringResource("notifications.accept", defaultValue: "Accept", bundle: bundle)
+        public static let decline = LocalizedStringResource("notifications.decline", defaultValue: "Decline", bundle: bundle)
+        public static let inviteDeclined = LocalizedStringResource("notifications.invite_declined", defaultValue: "Invite declined", bundle: bundle)
+        public static let declineTitle = LocalizedStringResource("notifications.decline_title", defaultValue: "Decline this invite?", bundle: bundle)
+        public static let declineMessage = LocalizedStringResource("notifications.decline_message", defaultValue: "The host will still owe your share.", bundle: bundle)
+        public static let invitedBy = LocalizedStringResource("notifications.invited_by", defaultValue: "Invited by", bundle: bundle)
+        public static let yourShare = LocalizedStringResource("notifications.your_share", defaultValue: "Your share", bundle: bundle)
+        public static let inviteAccepted = LocalizedStringResource("notifications.invite_accepted", defaultValue: "You're in. Your share is paid.", bundle: bundle)
+        public static let inviteDeclinedState = LocalizedStringResource("notifications.invite_declined_state", defaultValue: "You declined this invite.", bundle: bundle)
+        public static let notInvited = LocalizedStringResource("notifications.not_invited", defaultValue: "This booking is no longer available to you.", bundle: bundle)
+        public static let courtInvite = LocalizedStringResource("notifications.court_invite", defaultValue: "Court invite", bundle: bundle)
     }
 
     public enum Court {
@@ -682,6 +694,85 @@ public enum L10n {
         }
     }
 
+    public enum Matches {
+        public static let upcomingMatches = LocalizedStringResource("matches.upcoming", defaultValue: "Upcoming Matches", bundle: bundle)
+        public static let findAMatch = LocalizedStringResource("matches.find_a_match", defaultValue: "Find a match", bundle: bundle)
+        public static let allDates = LocalizedStringResource("matches.filter.all_dates", defaultValue: "All dates", bundle: bundle)
+        public static let thisWeek = LocalizedStringResource("matches.filter.this_week", defaultValue: "This week", bundle: bundle)
+        public static let friendly = LocalizedStringResource("matches.filter.friendly", defaultValue: "Friendly", bundle: bundle)
+        public static let competitive = LocalizedStringResource("matches.filter.competitive", defaultValue: "Competitive", bundle: bundle)
+        public static let cancelled = LocalizedStringResource("matches.badge.cancelled", defaultValue: "Cancelled", bundle: bundle)
+        public static let waiting = LocalizedStringResource("matches.badge.waiting", defaultValue: "Waiting", bundle: bundle)
+        public static let lastSpots = LocalizedStringResource("matches.badge.last_spots", defaultValue: "Last Spots", bundle: bundle)
+        public static let byChampz = LocalizedStringResource("matches.badge.by_champz", defaultValue: "By CHAMPZ", bundle: bundle)
+        public static let free = LocalizedStringResource("matches.price.free", defaultValue: "Free", bundle: bundle)
+        public static let noDescription = LocalizedStringResource("matches.no_description", defaultValue: "No description available", bundle: bundle)
+        public static let organizer = LocalizedStringResource("matches.organizer", defaultValue: "Organizer", bundle: bundle)
+        public static let call = LocalizedStringResource("matches.call", defaultValue: "Call", bundle: bundle)
+        public static let whatsApp = LocalizedStringResource("matches.whatsapp", defaultValue: "WhatsApp", bundle: bundle)
+        public static let chat = LocalizedStringResource("matches.chat", defaultValue: "Match chat", bundle: bundle)
+        public static let leaveWaitingList = LocalizedStringResource("matches.leave_waiting_list", defaultValue: "Leave Waiting List", bundle: bundle)
+        public static let leaveReasonPrompt = LocalizedStringResource("matches.leave_reason_prompt", defaultValue: "Tell us why you're leaving so we can keep games fair for everyone.", bundle: bundle)
+        public static let guest = LocalizedStringResource("matches.guest", defaultValue: "Guest", bundle: bundle)
+        public static func durationMinutes(_ minutes: Int) -> String {
+            String(format: String(localized: "matches.duration_minutes", defaultValue: "%1$lld min", bundle: .module), minutes)
+        }
+
+        public static func joinFor(_ price: String) -> String {
+            String(format: String(localized: "matches.join_for", defaultValue: "Join - %1$@", bundle: .module), price)
+        }
+        public static func refundedToWallet(_ amount: String) -> String {
+            String(format: String(localized: "matches.refunded_to_wallet", defaultValue: "%1$@ was returned to your wallet", bundle: .module), amount)
+        }
+        public static func spotsLeft(_ count: Int) -> String {
+            String(format: String(localized: "matches.spots_left", defaultValue: "%1$lld spots left", bundle: .module), count)
+        }
+        public static func teamNumber(_ number: Int) -> String {
+            String(format: String(localized: "matches.team_number", defaultValue: "Team %1$lld", bundle: .module), number)
+        }
+        public static func shareMessage(_ name: String, _ date: String, _ time: String, _ link: String) -> String {
+            String(format: String(localized: "matches.share_message", defaultValue: "Hey 👋, I am playing in the %1$@ starting on %2$@ @ %3$@, sign up here and join my team to be a Champion:\n%4$@", bundle: .module), name, date, time, link)
+        }
+    }
+
+    public enum Join {
+        public static let payForAFriend = LocalizedStringResource("join.pay_for_friend", defaultValue: "Pay For A Friend", bundle: bundle)
+        public static let payForAFriendSubtitle = LocalizedStringResource("join.pay_for_friend_subtitle", defaultValue: "Pay for a registered Champz friend.", bundle: bundle)
+        public static let payForAGuest = LocalizedStringResource("join.pay_for_guest", defaultValue: "Pay For A Guest", bundle: bundle)
+        public static let payForAGuestSubtitle = LocalizedStringResource("join.pay_for_guest_subtitle", defaultValue: "Pay for a guest player in this match.", bundle: bundle)
+        public static let youreIn = LocalizedStringResource("join.youre_in", defaultValue: "You're in! See you on the pitch.", bundle: bundle)
+        public static let walletCovers = LocalizedStringResource("join.wallet_covers", defaultValue: "Your wallet covers this. Pay with wallet.", bundle: bundle)
+        public static let insufficientFunds = LocalizedStringResource("join.insufficient_funds", defaultValue: "Your wallet balance isn't enough for this booking.", bundle: bundle)
+        public static let confirmPayment = LocalizedStringResource("join.confirm_payment", defaultValue: "Confirm payment", bundle: bundle)
+        public static let continueToCard = LocalizedStringResource("join.continue_to_card", defaultValue: "Continue to card", bundle: bundle)
+        public static let splitDecidedAtPayment = LocalizedStringResource("join.split_decided_at_payment", defaultValue: "Your balance is used first; the card pays the rest.", bundle: bundle)
+        public static func notEnoughSlots(_ count: Int) -> String {
+            String(format: String(localized: "join.not_enough_slots", defaultValue: "Not enough slots. Only %1$lld spot(s) remaining.", bundle: .module), count)
+        }
+        public static func playersSelected(_ count: Int) -> String {
+            String(format: String(localized: "join.players_selected", defaultValue: "%1$lld players selected", bundle: .module), count)
+        }
+        public static func selectCount(_ count: Int) -> String {
+            String(format: String(localized: "join.select_count", defaultValue: "Select (%1$lld)", bundle: .module), count)
+        }
+        public static func maxPlayers(_ count: Int) -> String {
+            String(format: String(localized: "join.max_players", defaultValue: "Only %1$lld player(s) can be added", bundle: .module), count)
+        }
+        public static func splitSummary(_ wallet: String, _ card: String) -> String {
+            String(format: String(localized: "join.split_summary", defaultValue: "%1$@ from your balance + %2$@ by card", bundle: .module), wallet, card)
+        }
+        public static func cardPaysAll(_ card: String) -> String {
+            String(format: String(localized: "join.card_pays_all", defaultValue: "Your card will be charged %1$@.", bundle: .module), card)
+        }
+    }
+
+    public enum Checkout {
+        public static let applePayUnavailable = LocalizedStringResource("checkout.apple_pay_unavailable", defaultValue: "Apple Pay is unavailable right now. Please try again.", bundle: bundle)
+        public static let retryApplePay = LocalizedStringResource("checkout.retry_apple_pay", defaultValue: "Retry Apple Pay", bundle: bundle)
+        public static let paymentProcessingTitle = LocalizedStringResource("checkout.payment_processing_title", defaultValue: "Payment Processing", bundle: bundle)
+        public static let paymentProcessingMessage = LocalizedStringResource("checkout.payment_processing_message", defaultValue: "Your payment is being processed. You will be notified once confirmed.", bundle: bundle)
+    }
+
     public enum Tabs {
         public static let home = LocalizedStringResource("tabs.home", defaultValue: "Home", bundle: bundle)
         public static let transferMarket = LocalizedStringResource("tabs.transfer_market", defaultValue: "Transfer Market", bundle: bundle)
@@ -703,4 +794,175 @@ public enum L10n {
         public static let emptyTitle = LocalizedStringResource("errors.empty.title", defaultValue: "Nothing here yet", bundle: bundle)
     }
 
+    public enum Tournaments {
+        public static let tournament = LocalizedStringResource("tournaments.badge", defaultValue: "Tournament", bundle: bundle)
+        public static let tournaments = LocalizedStringResource("tournaments.title", defaultValue: "Tournaments", bundle: bundle)
+        public static let oneDay = LocalizedStringResource("tournaments.filter.one_day", defaultValue: "1 Day", bundle: bundle)
+        public static let league = LocalizedStringResource("tournaments.filter.league", defaultValue: "League", bundle: bundle)
+        public static let knockout = LocalizedStringResource("tournaments.filter.knockout", defaultValue: "Knockout", bundle: bundle)
+        public static let leagueAndKnockout = LocalizedStringResource("tournaments.filter.league_knockout", defaultValue: "League + Knockout", bundle: bundle)
+        public static let groupAndKnockout = LocalizedStringResource("tournaments.filter.group_knockout", defaultValue: "Groups + Knockout", bundle: bundle)
+        public static let whoIsPlaying = LocalizedStringResource("tournaments.who_is_playing", defaultValue: "Who's playing", bundle: bundle)
+        public static let noParticipants = LocalizedStringResource("tournaments.no_participants", defaultValue: "Nobody has joined yet", bundle: bundle)
+        public static let notFound = LocalizedStringResource("tournaments.not_found", defaultValue: "Tournament not found", bundle: bundle)
+        public static let notFoundMessage = LocalizedStringResource("tournaments.not_found_message", defaultValue: "This tournament is no longer available.", bundle: bundle)
+        public static func joinFor(_ price: String) -> String {
+            String(format: String(localized: "tournaments.join_for", defaultValue: "Join for %1$@", bundle: .module), price)
+        }
+        public static func dayCount(_ days: Int) -> String {
+            String(format: String(localized: "tournaments.day_count", defaultValue: "%1$lld DAYS", bundle: .module), days)
+        }
+        public static func teamsPerGroup(_ count: Int) -> String {
+            String(format: String(localized: "tournaments.teams_per_group", defaultValue: "%1$lld teams/group", bundle: .module), count)
+        }
+        public static func maxAge(_ age: Int) -> String {
+            String(format: String(localized: "tournaments.max_age", defaultValue: "Max age: %1$lld.", bundle: .module), age)
+        }
+    }
+
+    public enum EditProfile {
+        public static let profileUpdated = LocalizedStringResource("edit_profile.updated", defaultValue: "Profile updated", bundle: bundle)
+        public static let uploadImageFrom = LocalizedStringResource("edit_profile.upload_image_from", defaultValue: "Upload Image from", bundle: bundle)
+        public static let camera = LocalizedStringResource("edit_profile.camera", defaultValue: "Camera", bundle: bundle)
+        public static let gallery = LocalizedStringResource("edit_profile.gallery", defaultValue: "Gallery", bundle: bundle)
+        public static let changePhoto = LocalizedStringResource("edit_profile.change_photo", defaultValue: "Change photo", bundle: bundle)
+        public static let photoUnreadable = LocalizedStringResource("edit_profile.photo_unreadable", defaultValue: "That photo couldn't be used. Please pick another one.", bundle: bundle)
+    }
+
+    public enum PlayerProfile {
+        public static let profileDetails = LocalizedStringResource("player_profile.title", defaultValue: "Profile Details", bundle: bundle)
+        public static let noTitles = LocalizedStringResource("player_profile.no_titles", defaultValue: "No titles on Champz yet", bundle: bundle)
+        public static let noTransfers = LocalizedStringResource("player_profile.no_transfers", defaultValue: "No transfer history", bundle: bundle)
+        public static let notAvailable = LocalizedStringResource("player_profile.not_available", defaultValue: "N/A", bundle: bundle)
+        public static let availableForTransfer = LocalizedStringResource("player_profile.available", defaultValue: "Open to transfers", bundle: bundle)
+        public static let notAvailableForTransfer = LocalizedStringResource("player_profile.not_available_for_transfer", defaultValue: "Not open to transfers", bundle: bundle)
+        public static func positionAndAge(_ position: String, age: Int) -> String {
+            String(format: String(localized: "player_profile.position_age", defaultValue: "%1$@, Age %2$lld", bundle: .module), position, age)
+        }
+    }
+
+    public enum Wallet {
+        public static let reasonMatchFee = LocalizedStringResource("wallet.reason.match_fee", defaultValue: "Friendly game fee", bundle: bundle)
+        public static let reasonTournamentServiceFee = LocalizedStringResource("wallet.reason.t_service_fee", defaultValue: "Tournament service fee", bundle: bundle)
+        public static let reasonCourtServiceFee = LocalizedStringResource("wallet.reason.bc_service_fee", defaultValue: "Court booking service fee", bundle: bundle)
+        public static let reasonGameServiceFee = LocalizedStringResource("wallet.reason.fg_service_fee", defaultValue: "Friendly game service fee", bundle: bundle)
+        public static let reasonBookCourt = LocalizedStringResource("wallet.reason.book_court", defaultValue: "Court booking payment", bundle: bundle)
+        public static let reasonCommission = LocalizedStringResource("wallet.reason.commission", defaultValue: "Commission", bundle: bundle)
+        public static let reasonRefund = LocalizedStringResource("wallet.reason.refund", defaultValue: "Refund", bundle: bundle)
+        public static let reasonSettlement = LocalizedStringResource("wallet.reason.settlement", defaultValue: "Settlement", bundle: bundle)
+        public static let reasonTopup = LocalizedStringResource("wallet.reason.topup", defaultValue: "Wallet top-up", bundle: bundle)
+        public static let reasonTopupBonus = LocalizedStringResource("wallet.reason.topup_bonus", defaultValue: "Top-up bonus", bundle: bundle)
+        public static let reasonTransfer = LocalizedStringResource("wallet.reason.transfer", defaultValue: "Transfer", bundle: bundle)
+        public static let reasonLegacyImport = LocalizedStringResource("wallet.reason.legacy_import", defaultValue: "Imported transaction", bundle: bundle)
+        public static let reasonAccountClosure = LocalizedStringResource("wallet.reason.account_closure", defaultValue: "Account closure", bundle: bundle)
+        public static let reasonUnclaimedCredit = LocalizedStringResource("wallet.reason.unclaimed_credit", defaultValue: "Unclaimed credit", bundle: bundle)
+        public static let reasonAdminAdjustment = LocalizedStringResource("wallet.reason.admin_adjustment", defaultValue: "Adjustment", bundle: bundle)
+        public static let reasonOpeningFloor = LocalizedStringResource("wallet.reason.opening_floor", defaultValue: "Negative balance cleared", bundle: bundle)
+        public static let reasonOpeningAlignment = LocalizedStringResource("wallet.reason.opening_alignment", defaultValue: "Opening balance adjustment", bundle: bundle)
+        public static let reasonUnknown = LocalizedStringResource("wallet.reason.unknown", defaultValue: "Transaction", bundle: bundle)
+        public static let youWillGet = LocalizedStringResource("wallet.you_will_get", defaultValue: "You'll get", bundle: bundle)
+        public static let bonus = LocalizedStringResource("wallet.bonus", defaultValue: "Bonus:", bundle: bundle)
+        public static let backToWallet = LocalizedStringResource("wallet.back_to_wallet", defaultValue: "Back to Wallet", bundle: bundle)
+    }
+
+    public enum Market {
+        public static let filter = LocalizedStringResource("transfer_market.filter", defaultValue: "Filter", bundle: bundle)
+        public static let reset = LocalizedStringResource("transfer_market.reset", defaultValue: "Reset", bundle: bundle)
+        public static let anyAge = LocalizedStringResource("transfer_market.any_age", defaultValue: "Any age", bundle: bundle)
+        public static let allPositions = LocalizedStringResource("transfer_market.all_positions", defaultValue: "All", bundle: bundle)
+        public static let anyNationality = LocalizedStringResource("transfer_market.any_nationality", defaultValue: "Any nationality", bundle: bundle)
+        public static let nationalityPrompt = LocalizedStringResource("transfer_market.nationality_prompt", defaultValue: "Search for a nationality", bundle: bundle)
+        /// "12 Goals / Last 30 Games".
+        public static func goalsAndGames(_ goals: Int, _ games: Int) -> String {
+            String(format: String(localized: "transfer_market.goals_games", defaultValue: "%1$lld Goals / Last %2$lld Games", bundle: .module), goals, games)
+        }
+
+        /// "18 – 30".
+        public static func ageRange(_ from: Int, _ to: Int) -> String {
+            String(format: String(localized: "transfer_market.age_range", defaultValue: "%1$lld – %2$lld", bundle: .module), from, to)
+        }
+    }
+
+    public enum Courts {
+        public static let selectDuration = LocalizedStringResource("courts.select_duration", defaultValue: "Select Duration", bundle: bundle)
+        public static let chooseCourt = LocalizedStringResource("courts.choose_court", defaultValue: "Choose Your Court", bundle: bundle)
+        public static let needHelp = LocalizedStringResource("courts.need_help", defaultValue: "Need help?", bundle: bundle)
+        public static let checkout = LocalizedStringResource("courts.checkout", defaultValue: "Checkout", bundle: bundle)
+        public static let surface = LocalizedStringResource("courts.surface", defaultValue: "Surface", bundle: bundle)
+        public static let indoor = LocalizedStringResource("courts.surface.indoor", defaultValue: "Indoor", bundle: bundle)
+        public static let grass = LocalizedStringResource("courts.surface.grass", defaultValue: "Grass", bundle: bundle)
+        public static let synthetic = LocalizedStringResource("courts.surface.synthetic", defaultValue: "Synthetic", bundle: bundle)
+        public static let closedForHoliday = LocalizedStringResource("courts.closed_holiday", defaultValue: "The venue is closed on this day.", bundle: bundle)
+        public static let noStartsLeft = LocalizedStringResource("courts.no_starts", defaultValue: "No times left on this day. Try another date.", bundle: bundle)
+        public static let noCourtsForWindow = LocalizedStringResource("courts.no_courts_window", defaultValue: "No court is free for this time. Try another start or duration.", bundle: bundle)
+        public static let selectCourtFirst = LocalizedStringResource("courts.select_court_first", defaultValue: "Choose a court to continue.", bundle: bundle)
+        public static let aboutVenue = LocalizedStringResource("courts.about_venue", defaultValue: "About the venue", bundle: bundle)
+        public static let splitExplainer = LocalizedStringResource("courts.split_explainer", defaultValue: "Everyone pays an equal share. Friends get an invite to pay theirs.", bundle: bundle)
+        public static let friendsPay = LocalizedStringResource("courts.friends_pay", defaultValue: "Each friend pays", bundle: bundle)
+        public static let bookingConfirmedToast = LocalizedStringResource("courts.booking_confirmed", defaultValue: "Court booked", bundle: bundle)
+        /// "90 min".
+        public static func minutes(_ value: Int) -> String {
+            String(format: String(localized: "courts.minutes", defaultValue: "%1$lld min", bundle: .module), value)
+        }
+    }
+
+    public enum Chat {
+        public static let title = LocalizedStringResource("chat.title", defaultValue: "Match chat", bundle: bundle)
+        public static let players = LocalizedStringResource("chat.players", defaultValue: "Players", bundle: bundle)
+        public static let empty = LocalizedStringResource("chat.empty", defaultValue: "No messages yet.\nBe the first to say something!", bundle: bundle)
+        public static let placeholder = LocalizedStringResource("chat.placeholder", defaultValue: "Write your message", bundle: bundle)
+        public static let send = LocalizedStringResource("chat.send", defaultValue: "Send", bundle: bundle)
+        public static let loadFailed = LocalizedStringResource("chat.load_failed", defaultValue: "Couldn't load the chat.", bundle: bundle)
+        public static let sendFailed = LocalizedStringResource("chat.send_failed", defaultValue: "Your message wasn't sent. Try again.", bundle: bundle)
+        public static let unavailable = LocalizedStringResource("chat.unavailable", defaultValue: "Chat isn't available right now.", bundle: bundle)
+        public static let retry = LocalizedStringResource("chat.retry", defaultValue: "Retry", bundle: bundle)
+        /// "+12 Players".
+        public static func playerCount(_ count: Int) -> String {
+            String(format: String(localized: "chat.player_count", defaultValue: "+%1$lld Players", bundle: .module), count)
+        }
+    }
+
+    public enum SettingsScreen {
+        public static let title = LocalizedStringResource("settings.title", defaultValue: "Settings", bundle: bundle)
+        public static let privacyPolicy = LocalizedStringResource("settings.privacy_policy", defaultValue: "Privacy Policy", bundle: bundle)
+        public static let logOut = LocalizedStringResource("settings.log_out", defaultValue: "Log out", bundle: bundle)
+        public static let logOutConfirm = LocalizedStringResource("settings.log_out_confirm", defaultValue: "Are you sure you want to log out?", bundle: bundle)
+        public static let deleteTitle = LocalizedStringResource("settings.delete_title", defaultValue: "Delete your account?", bundle: bundle)
+        public static let deleteBlocked = LocalizedStringResource("settings.delete_blocked", defaultValue: "Clear these first, then you can delete your account:", bundle: bundle)
+        public static let blockerClub = LocalizedStringResource("settings.blocker_club", defaultValue: "Hand over the club you captain", bundle: bundle)
+        public static let blockerFixture = LocalizedStringResource("settings.blocker_fixture", defaultValue: "Play or cancel", bundle: bundle)
+        public static let balanceTitle = LocalizedStringResource("settings.balance_title", defaultValue: "Your wallet balance", bundle: bundle)
+        public static let dispositionGive = LocalizedStringResource("settings.disposition_give", defaultValue: "Give it to Champz", bundle: bundle)
+        public static let deleteConfirmButton = LocalizedStringResource("settings.delete_confirm_button", defaultValue: "Delete my account", bundle: bundle)
+        public static let deleteFinal = LocalizedStringResource("settings.delete_final", defaultValue: "This signs you out of every device.", bundle: bundle)
+        public static let email = LocalizedStringResource("settings.email", defaultValue: "Email us", bundle: bundle)
+        public static let whatsApp = LocalizedStringResource("settings.whatsapp", defaultValue: "WhatsApp", bundle: bundle)
+        public static let designSystem = LocalizedStringResource("settings.design_system", defaultValue: "Design system (debug)", bundle: bundle)
+        /// "Champz 2.0.0 (1)".
+        public static func version(_ version: String, _ build: String) -> String {
+            String(format: String(localized: "settings.version", defaultValue: "Champz %1$@ (%2$@)", bundle: .module), version, build)
+        }
+
+        /// "Keep it for 30 days (restored if you sign in again, then it goes to Champz)".
+        public static func dispositionKeep(_ days: Int) -> String {
+            String(format: String(localized: "settings.disposition_keep", defaultValue: "Keep it for %1$lld days: signing in again restores your account and balance. After that it goes to Champz.", bundle: .module), days)
+        }
+
+        /// What deleting means, with the window.
+        public static func deleteExplainer(_ days: Int) -> String {
+            String(format: String(localized: "settings.delete_explainer", defaultValue: "Your account is closed now. Signing in again on this phone within %1$lld days restores it; after that your data is removed for good.", bundle: .module), days)
+        }
+    }
+
+    public enum History {
+        public static let title = LocalizedStringResource("history.title", defaultValue: "My History", bundle: bundle)
+        public static let upcoming = LocalizedStringResource("history.upcoming", defaultValue: "Upcoming", bundle: bundle)
+        public static let previous = LocalizedStringResource("history.previous", defaultValue: "Previous", bundle: bundle)
+        public static let empty = LocalizedStringResource("history.empty", defaultValue: "No history yet", bundle: bundle)
+        public static let finished = LocalizedStringResource("history.finished", defaultValue: "Finished", bundle: bundle)
+        public static let perPlayer = LocalizedStringResource("history.per_player", defaultValue: "per player", bundle: bundle)
+        public static let perBooking = LocalizedStringResource("history.per_booking", defaultValue: "per booking", bundle: bundle)
+        public static let receipt = LocalizedStringResource("history.receipt", defaultValue: "Booking receipt", bundle: bundle)
+        public static let paidWith = LocalizedStringResource("history.paid_with", defaultValue: "Paid with", bundle: bundle)
+    }
 }

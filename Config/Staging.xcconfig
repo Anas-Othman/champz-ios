@@ -4,3 +4,4 @@ APP_DISPLAY_NAME = Champz Staging
 APP_BUNDLE_ID = com.app.footchampz.staging
 APP_ENTITLEMENTS = App/Resources/Champz-staging.entitlements
 API_BASE_URL = https:/$()/api-staging.champz.me
+WEB_URL = https:/$()/staging.champz.me

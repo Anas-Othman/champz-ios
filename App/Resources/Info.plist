@@ -37,6 +37,10 @@
 	<string>$(APP_ENVIRONMENT)</string>
 	<key>ChampzSentryDSN</key>
 	<string>$(SENTRY_DSN)</string>
+	<key>ChampzWebURL</key>
+	<string>$(WEB_URL)</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSCameraUsageDescription</key>

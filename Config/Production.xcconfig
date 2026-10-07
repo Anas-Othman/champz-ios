@@ -5,3 +5,4 @@ APP_DISPLAY_NAME = Champz
 APP_BUNDLE_ID = com.app.footchampz
 APP_ENTITLEMENTS = App/Resources/Champz.entitlements
 API_BASE_URL = https:/$()/api-prod.champz.me
+WEB_URL = https:/$()/champz.me

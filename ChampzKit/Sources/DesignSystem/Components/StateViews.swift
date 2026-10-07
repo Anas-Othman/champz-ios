@@ -32,7 +32,11 @@ public struct LoadableView<Value: Sendable, Content: View, Placeholder: View>: V
     public var body: some View {
         switch state {
         case .idle, .loading:
+            // Fill the space and stay at the top, like the loaded list does. A skeleton is
+            // shorter than the screen, and SwiftUI centres a short view: on a screen with a
+            // filter bar above it, everything dropped down while loading, then jumped back.
             placeholder()
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                 .transition(.opacity)
         case let .loaded(value):
             if isEmpty(value) {
@@ -132,6 +136,7 @@ public struct ListSkeleton: View {
             }
         }
         .padding(Spacing.gutter)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top) // also when used on its own
         .shimmering()
         .accessibilityHidden(true)
     }

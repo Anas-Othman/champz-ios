@@ -25,10 +25,21 @@ public final class AppRouter {
             .debug("push \(String(describing: route), privacy: .public) on \(target.rawValue, privacy: .public)")
     }
 
+    /// Back from a screen that hides the navigation bar.
+    public func goBack() {
+        pop()
+    }
+
     public func pop(on tab: AppTab? = nil) {
         let target = tab ?? selectedTab
         guard !(paths[target]?.isEmpty ?? true) else { return }
         paths[target]?.removeLast()
+    }
+
+    /// Pops back to the most recent screen matching `route` (e.g. the match after joining).
+    public func popTo(_ route: AppRoute) {
+        guard let index = paths[selectedTab]?.lastIndex(of: route) else { return }
+        paths[selectedTab]?.removeSubrange((index + 1)...)
     }
 
     public func popToRoot(on tab: AppTab? = nil) {
@@ -78,6 +89,7 @@ public final class AppRouter {
         case let .team(id): push(.teamDetail(id), on: .home)
         case .wallet: push(.walletHistory, on: .home)
         case .notifications: push(.notifications, on: .home)
+        case let .push(route): push(route, on: .home)
         case .paymentCallback:
             // Handled by the checkout flow while it is presented; nothing to navigate to here.
             break

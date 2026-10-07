@@ -43,7 +43,7 @@ final class IdentifierEntryViewModel {
             return digits.count >= 6 ? .phone(countryCode: country.dial, number: digits) : nil
         case .email:
             let trimmed = email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-            return Self.isValidEmail(trimmed) ? .email(trimmed) : nil
+            return Validation.isValidEmail(trimmed) ? .email(trimmed) : nil
         }
     }
 
@@ -69,11 +69,5 @@ final class IdentifierEntryViewModel {
         } catch {
             toasts.show(error)
         }
-    }
-
-    /// Same rule as the current app: something@something.tld.
-    static func isValidEmail(_ value: String) -> Bool {
-        let pattern = #"^[^\s@<>()\[\],;:\\"]+(\.[^\s@<>()\[\],;:\\"]+)*@([A-Za-z0-9-]+\.)+[A-Za-z]{2,}$"#
-        return value.range(of: pattern, options: .regularExpression) != nil
     }
 }

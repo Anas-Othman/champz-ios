@@ -15,7 +15,19 @@ public actor HTTPClient: HTTPClientProtocol {
     private let decoder: JSONDecoder
     private let maxAttempts = 2
 
-    public init(baseURL: URL, session: URLSession = .shared, interceptors: [any RequestInterceptor] = []) {
+    /// API data must always be fresh: a cached `GET /games/{id}/` would show "Join" after joining.
+    public static let apiSession: URLSession = {
+        let configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+        configuration.urlCache = nil
+        return URLSession(configuration: configuration)
+    }()
+
+    public init(
+        baseURL: URL,
+        session: URLSession = HTTPClient.apiSession,
+        interceptors: [any RequestInterceptor] = []
+    ) {
         self.baseURL = baseURL
         self.session = session
         self.interceptors = interceptors

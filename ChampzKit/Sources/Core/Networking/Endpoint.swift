@@ -54,11 +54,48 @@ public struct Endpoint<Response: Decodable & Sendable>: Sendable {
         return copy
     }
 
+    /// Attaches a `multipart/form-data` body: text fields plus an optional file (profile photo).
+    public func multipart(_ fields: [String: String], file: MultipartFile? = nil) -> Self {
+        let boundary = "champz-\(UUID().uuidString)"
+        var body = Data()
+        func append(_ text: String) {
+            body.append(Data(text.utf8))
+        }
+        for (name, value) in fields.sorted(by: { $0.key < $1.key }) {
+            append("--\(boundary)\r\nContent-Disposition: form-data; name=\"\(name)\"\r\n\r\n\(value)\r\n")
+        }
+        if let file {
+            append("--\(boundary)\r\n")
+            append("Content-Disposition: form-data; name=\"\(file.name)\"; filename=\"\(file.filename)\"\r\n")
+            append("Content-Type: \(file.mimeType)\r\n\r\n")
+            body.append(file.data)
+            append("\r\n")
+        }
+        append("--\(boundary)--\r\n")
+        var copy = self
+        copy.body = body
+        copy.headers["Content-Type"] = "multipart/form-data; boundary=\(boundary)"
+        return copy
+    }
+
     public func query(_ items: [String: String?]) -> Self {
         var copy = self
         copy.query += items.compactMap { key, value in value.map { URLQueryItem(name: key, value: $0) } }
             .sorted { $0.name < $1.name }
         return copy
+    }
+}
+
+/// A file part of a multipart body.
+public struct MultipartFile: Sendable, Equatable {
+    public let name: String
+    public let filename: String
+    public let mimeType: String
+    public let data: Data
+
+    /// A JPEG under the given form field name.
+    public static func jpeg(_ data: Data, name: String) -> MultipartFile {
+        MultipartFile(name: name, filename: "\(name).jpg", mimeType: "image/jpeg", data: data)
     }
 }
 

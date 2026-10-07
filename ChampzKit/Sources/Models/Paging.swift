@@ -28,10 +28,18 @@ public struct PageResult<Item: Sendable>: Sendable {
         self.next = next
         self.total = total
     }
-
-    public func map<T: Sendable>(_ transform: (Item) -> T) -> PageResult<T> {
-        PageResult<T>(items: items.map(transform), next: next, total: total)
-    }
 }
 
 extension PageResult: Equatable where Item: Equatable {}
+
+/// Django REST Framework's page envelope: `{"count", "next", "previous", "results"}`.
+/// A bad row is dropped and reported rather than failing the page.
+public struct PaginatedResponse<Item: Decodable & Sendable>: Decodable, Sendable {
+    @DefaultZero public var count: Int
+    @DefaultEmpty public var next: String
+    @LossyArray public var results: [Item]
+
+    public func pageResult(for page: Page) -> PageResult<Item> {
+        PageResult(items: results, next: next.isEmpty ? nil : page.next, total: count)
+    }
+}

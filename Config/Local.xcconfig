@@ -5,3 +5,4 @@ APP_BUNDLE_ID = com.app.footchampz.staging
 APP_ENTITLEMENTS = App/Resources/Champz-staging.entitlements
 // xcconfig treats "//" as a comment, so the scheme separator is split with $().
 API_BASE_URL = http:/$()/localhost:8080
+WEB_URL = http:/$()/localhost:8080

@@ -41,7 +41,8 @@ public struct SectionHeader: View {
     public var body: some View {
         HStack(alignment: .firstTextBaseline) {
             Text(title)
-                .font(AppFont.headline)
+                .font(AppFont.sectionHeader)
+                .textCase(.uppercase) // all section titles in capitals, whatever the string's own case
                 .foregroundStyle(.ds.textPrimary)
             Spacer()
             if let actionTitle, let action {
